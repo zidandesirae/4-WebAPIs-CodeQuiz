@@ -1,0 +1,26 @@
+body {
+    background-color: #f8f9fa!important;
+}
+
+/* Top section of page */
+.scores {
+    float: left;
+    padding: 20px;
+
+}
+.timer {
+    float: right;
+    padding: 20px;
+
+}
+
+.navbar-light
+.navbar-text {
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    color: black;
+}
+
+/* Main section of page */
