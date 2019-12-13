@@ -43,7 +43,7 @@ let setTimer;
 let beginningTime = questions.length * 10;
 let timerDisplay = document.getElementById("display-time");
 //Variables for questions
-let questionCount = 0;
+let questionCounter = 0;
 let questionText = document.getElementById("question-text");
 let ansBtn1 = document.getElementById("answer1");
 let ansBtn2 = document.getElementById("answer2");
@@ -62,6 +62,7 @@ let submitBtn = document.getElementById("submit");
 //When page is loaded
 mainPage.removeAttribute("class", "hide1");
 
+
 // clicking the start button
 startBtn.addEventListener("click", startQuiz);
 
@@ -71,7 +72,7 @@ function startQuiz() {
     //diplay question page
     mainPage.setAttribute("class", "hide1");
     questionPage.removeAttribute("class", "hide2");
-    displayQuestion();
+    questionDisplayed();
 
     //set and start timer when clicking start button
     setTimer = setInterval(function() {
@@ -85,35 +86,38 @@ function startQuiz() {
             questionPage.setAttribute("class", "hide2");
             finalUserScore.textContent = userScore;
             finishTime.textContent = beginningTime;
+            populateStorage();
         };
     }, 1000);
 };
 
+
 //Display questions
-function displayQuestion() {
-    let currentQuestion = questions[questionCount];
+function questionDisplayed() {
+    let currentQuestion = questions[questionCounter];
     questionText.textContent = currentQuestion.title;
     ansBtn1.textContent = currentQuestion.choices[0];
     ansBtn2.textContent = currentQuestion.choices[1];
     ansBtn3.textContent = currentQuestion.choices[2];
     ansBtn4.textContent = currentQuestion.choices[3];
-    console.log(questionCount);
+    console.log(questionCounter);
 };
+
 
 //Check for correct answers
 function checkAnswer(){
-    if (userAnswer === questions[questionCount].answer){
-        questionCount ++;
+    if (userAnswer === questions[questionCounter].answer){
+        questionCounter ++;
         userScore += 20;
         console.log(userScore);
     }
     else {
         beginningTime -= 15;
-        questionCount ++;
+        questionCounter ++;
         console.log(userScore);
     };
 
-    if (questionCount === 5) {
+    if (questionCounter === 5) {
         endPage.removeAttribute("class", "hide3");
         mainPage.setAttribute("class", "hide1");
         questionPage.setAttribute("class", "hide2");
@@ -121,33 +125,47 @@ function checkAnswer(){
         clearInterval(setTimer);
         timerDisplay.innerHTML = "0";
         finalUserScore.textContent = userScore;
+        populateStorage();
     };    
 };
+
 
 //Click on answer buttons
 ansBtn1.addEventListener("click", function(){
     userAnswer = this.textContent;
     checkAnswer();
-    displayQuestion();
+    questionDisplayed();
 });
 
 ansBtn2.addEventListener("click", function(){
     userAnswer = this.textContent;
     checkAnswer();
-    displayQuestion();
+    questionDisplayed();
 });
 
 ansBtn3.addEventListener("click", function(){
     userAnswer = this.textContent;
     checkAnswer();
-    displayQuestion();
+    questionDisplayed();
 });
 
 ansBtn4.addEventListener("click", function(){
     userAnswer = this.textContent;
     checkAnswer();
-    displayQuestion();
+    questionDisplayed();
 });
+
+
+// clicking submit button
+submitBtn.addEventListener("click", submit);
+
+// submit button
+function submit() {
+    window.location.href = "highscores.html";
+    setContent();
+    console.log(setContent);
+};
+
 
 // clicking the restart button
 restartBtn.addEventListener("click", restart);
@@ -159,15 +177,27 @@ function restart() {
     endPage.setAttribute("class", "hide3");
     clearInterval(setTimer);
     beginningTime = questions.length * 10;
-    questionCount = 0;
+    questionCounter = 0;
     userScore = 0;
 };
 
-// clicking submit button
-submitBtn.addEventListener("click", submit);
 
-// submit button
-function submit() {
-    window.location.href = "highscores.html";
 
-}
+
+
+
+if(!localStorage.getItem('final-score')) {
+    populateStorage();
+  };
+
+function populateStorage() {
+    localStorage.setItem("final-score", document.getElementById("final-score").textContent);
+    localStorage.setItem("finish-time", document.getElementById("finish-time").textContent);
+
+    displayStorage();
+};
+
+function displayStorage() {
+    let currentHS = localStorage.getItem("final-score");
+    console.log(currentHS);
+};
