@@ -40,7 +40,7 @@ let startBtn = document.getElementById("start");
 let restartBtn = document.getElementById("restart");
 //Variables for timer
 let setTimer;
-let beginningTime = questions.length * 10;
+let beginningTime = questions.length * 15;
 let timerDisplay = document.getElementById("display-time");
 //Variables for questions
 let questionCounter = 0;
@@ -176,7 +176,7 @@ function restart() {
     questionPage.setAttribute("class", "hide2");
     endPage.setAttribute("class", "hide3");
     clearInterval(setTimer);
-    beginningTime = questions.length * 10;
+    beginningTime = questions.length * 15;
     questionCounter = 0;
     userScore = 0;
 };
