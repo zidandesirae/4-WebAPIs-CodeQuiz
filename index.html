@@ -1,61 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Code Quiz</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+  
+  <title>Quiz App</title>
 </head>
+
 <body>
-<!-- Top section -->
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="highscores.html">View Highscores</a>
-        <span class="navbar-text">
-            Time: <span id="timer">0</span>
-        </span>
-    </nav>
+  <!-- Top section -->
+    <div nav-container>
+        <nav class="navbar navbar-light bg-light">
+            <a id="normalize" class="navbar-brand" href="highscores.html">View Highscores</a>
+            <span id="timer" class="navbar-text">
+            Time: <span id="display-time">0</span>
+            </span>
+        </nav>
+    </div>
 
-<!-- Main page to begin     -->
-    <div class="main-page">
+    <div class="main-container">
         <div class="jumbotron">
-            <h1 class="display-4">The Code Quiz</h1>
-            <hr class="my-4">
-            <p>Let's test your knowledge on basic JavaScript! You will be given 75 seconds to answer 5 questions. With each question you answer correctly, your score will increase by 20 points. With each question you answer incorrctly, 15 seconds will be deducted from the timer. Good Luck!</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button" id="startTimer">Start Quiz</a>
+      
+            <!-- Main page to begin -->
+            <div id="main-page" class="hide1">
+                <h1 class="display-4">The Code Quiz</h1>
+                <hr class="my-4">
+                <p>Let's test your knowledge on basic JavaScript! You will be given 75 seconds to answer 5 questions. With each question you answer correctly, your score will increase by 20 points. With each question you answer incorrctly, 15 seconds will be deducted from the timer. Good Luck!</p>
+                <button id="start" class="start-btn btn btn-primary btn-lg" href="#" role="button">Start</button>
+            </div>
+      
+            <!-- Each question appears -->
+            <div id="question-page" class="hide2">
+                <p class="lead" id="question-text">Question</p>
+                <div id="answer-buttons" class="answer-buttons">
+                    <a id="answer1" class="btn btn-primary btn-lg answers" href="#" role="button">Answer 1</a>
+                    <br>
+                    <a id="answer2" class="btn btn-primary btn-lg answers" href="#" role="button">Answer 2</a>
+                    <br>
+                    <a id="answer3" class="btn btn-primary btn-lg answers" href="#" role="button">Answer 3</a>
+                    <br>
+                    <a id="answer4" class="btn btn-primary btn-lg answers" href="#" role="button">Answer 4</a>
+                </div>
+            </div>
+
+            <!-- End page with score -->
+            <div id="end-page" class="hide3">
+                <h1 class="display-4">Quiz Complete!</h1>
+                <hr class="my-4">
+                <p>Final Score: 
+                    <span id="final-score">0</span>
+                </p>
+                <p>Completed with 
+                    <span id="finish-time">0</span> seconds to spare.
+                </p>
+                <p>Add your name below and press the submit button to be added the Highscores List!</p>
+                <input type="text">
+                <br>
+                <button id="submit" class="btn btn-primary btn-lg" href="#" role="button">Submit</button>
+                <hr class="my-4">
+                <p>Think you can get a better score? Press the restart button and try again!</p>
+                <button id="restart" class="btn btn-primary btn-lg" href="#" role="button">Restart</button>
+            </div>
+
         </div>
     </div>
 
-<!-- Each question appears     -->
-    <div class="each-question">
-        <div class="jumbotron">
-            <p class="lead" id="theQuestion"></p>
-            <hr class="my-4">
-            <a class="btn btn-primary btn-lg" href="#" role="button" id="option1"></a>
-            <br>
-            <a class="btn btn-primary btn-lg" href="#" role="button" id="option2"></a>
-            <br>
-            <a class="btn btn-primary btn-lg" href="#" role="button" id="option3"></a>
-            <br>
-            <a class="btn btn-primary btn-lg" href="#" role="button" id="option4"></a>
-        </div>
-    </div>
-
-<!-- End page with score -->
-    <div class="endPage">
-        <div class="jumbotron">
-            <h1 class="display-4">Quiz Complete!</h1>
-            <hr class="my-4">
-            <p class="lead" id="finalScore">Final Score: </p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Try Again</a>
-        </div>
-    </div>
-    
-
-
-    <script type="text/javascript" src="questions.js"></script>
-    <script type="text/javascript" src="logic.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 
 </body>
+
 </html>

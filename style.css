@@ -24,3 +24,22 @@ body {
 }
 
 /* Main section of page */
+
+.hide1 {
+    display: none;
+}
+
+.hide2 {
+    display: none;
+}
+
+.hide3 {
+    display: none;
+}
+
+a.answers {
+    margin-bottom: 20px;
+}
+input {
+    margin-bottom: 20px;
+}
