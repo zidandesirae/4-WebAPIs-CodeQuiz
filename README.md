@@ -26,4 +26,4 @@ WHEN the game is over
 THEN I can save my initials and score
 ```
 
-https://zidandesirae.github.io/Web-APIs-code-quiz/
+https://zidandesirae.github.io/4-Web-APIs-CodeQuiz/
